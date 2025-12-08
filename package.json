@@ -6,14 +6,31 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "eslint"
+    "lint": "eslint",
+    "db:init": "tsx scripts/init-db.ts",
+    "migrate": "tsx scripts/migrate.ts",
+    "migrate:down": "tsx scripts/migrate-down.ts",
+    "migrate:status": "tsx scripts/migrate-status.ts"
   },
   "dependencies": {
+    "@aws-sdk/client-dsql": "^3.946.0",
+    "@aws-sdk/dsql-signer": "^3.946.0",
+    "@aws-sdk/rds-signer": "^3.946.0",
+    "@mikro-orm/core": "^6.6.2",
+    "@mikro-orm/migrations": "^6.6.2",
+    "@mikro-orm/postgresql": "^6.6.2",
+    "@mikro-orm/reflection": "^6.6.2",
+    "@types/pg": "^8.15.6",
+    "dotenv": "^17.2.3",
     "next": "16.0.7",
+    "pg": "^8.16.3",
     "react": "19.2.0",
-    "react-dom": "19.2.0"
+    "react-dom": "19.2.0",
+    "reflect-metadata": "^0.2.2",
+    "uuidv7": "^1.1.0"
   },
   "devDependencies": {
+    "@mikro-orm/cli": "^6.6.2",
     "@tailwindcss/postcss": "^4",
     "@types/node": "^20",
     "@types/react": "^19",
@@ -21,6 +38,14 @@
     "eslint": "^9",
     "eslint-config-next": "16.0.7",
     "tailwindcss": "^4",
+    "tsx": "^4.21.0",
     "typescript": "^5"
+  },
+  "mikro-orm": {
+    "useTsNode": true,
+    "configPaths": [
+      "./src/mikro-orm.config.ts",
+      "./mikro-orm.config.ts"
+    ]
   }
 }
