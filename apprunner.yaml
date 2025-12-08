@@ -5,15 +5,17 @@ build:
         pre-build:
             # Install dependencies
             - npm ci
+            # Fetch parameters from Parameter Store and generate .env file
+            - node scripts/fetch-params.js
         build:
             # Build the Next.js application
             - npm run build
-        # post-build:
-        # Initialize database and run migrations
-        # This will create the migration table if it doesn't exist
-        # and apply any pending migrations
-        # - npm run db:init || true
-        # - npm run migrate
+        post-build:
+            # Initialize database and run migrations
+            # This will create the migration table if it doesn't exist
+            # and apply any pending migrations
+            - npm run db:init || true
+            - npm run migrate
 
 run:
     command: npm start
@@ -23,19 +25,6 @@ run:
     env:
         - name: NODE_ENV
           value: "production"
-        # The following environment variables should be configured in App Runner console:
-        # - DSQL_HOSTNAME (your Aurora DSQL cluster endpoint)
-        # - DSQL_REGION (AWS region of your DSQL cluster)
-        # - DSQL_DATABASE (database name, typically 'postgres')
-    secrets:
-        - name: DSQL_HOSTNAME
-          value-from: arn:aws:ssm:us-east-1:103912182895:parameter/demo/smkn1cimahi/dsql/hostname
-        - name: DSQL_REGION
-          value-from: arn:aws:ssm:us-east-1:103912182895:parameter/demo/smkn1cimahi/dsql/region
-        - name: DSQL_USERNAME
-          value-from: arn:aws:ssm:us-east-1:103912182895:parameter/demo/smkn1cimahi/dsql/username
-        - name: DSQL_DATABASE
-          value-from: arn:aws:ssm:us-east-1:103912182895:parameter/demo/smkn1cimahi/dsql/database
 
     # Health check configuration
     # App Runner will ping this endpoint to verify the service is healthy

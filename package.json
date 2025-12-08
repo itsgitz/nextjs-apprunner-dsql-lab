@@ -14,6 +14,7 @@
   },
   "dependencies": {
     "@aws-sdk/client-dsql": "^3.946.0",
+    "@aws-sdk/client-ssm": "^3.947.0",
     "@aws-sdk/dsql-signer": "^3.946.0",
     "@aws-sdk/rds-signer": "^3.946.0",
     "@mikro-orm/core": "^6.6.2",
