@@ -19,12 +19,12 @@ export class Post {
     published: boolean = false;
 
     @Property({ columnType: "timestamp", defaultRaw: "CURRENT_TIMESTAMP" })
-    createdAt: Date = new Date();
+    createdAt?: Date = new Date();
 
     @Property({
         columnType: "timestamp",
         defaultRaw: "CURRENT_TIMESTAMP",
         onUpdate: () => new Date(),
     })
-    updatedAt: Date = new Date();
+    updatedAt?: Date = new Date();
 }
