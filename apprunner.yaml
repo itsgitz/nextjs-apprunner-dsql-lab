@@ -1,5 +1,5 @@
 version: 1.0
-runtime: nodejs20
+runtime: nodejs22
 build:
     commands:
         pre-build:
@@ -16,7 +16,6 @@ build:
             - npm run migrate
 
 run:
-    runtime-version: 20
     command: npm start
     network:
         port: 3000
