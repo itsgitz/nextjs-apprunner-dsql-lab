@@ -5,32 +5,16 @@ build:
         pre-build:
             # Install dependencies
             - npm ci
+            - node ./scripts/fetch-params.js
         build:
             # Build the Next.js application
             - npm run build
-        post-build:
-            # Initialize database and run migrations
-            # This will create the migration table if it doesn't exist
-            # and apply any pending migrations
-            # - npm run db:init || true
-            # - npm run migrate
 
 run:
     command: npm start
     network:
         port: 3000
         env: APP_PORT
-    env:
-        - name: NODE_ENV
-          value: "production"
-        - name: DSQL_HOSTNAME
-          value: "r5tl7bm5gviflc2ats54zqfncq.dsql.us-east-1.on.aws"
-        - name: DSQL_USERNAME
-          value: "admin"
-        - name: DSQL_DATABASE
-          value: "postgres"
-        - name: DSQL_REGION
-          value: "us-east-1"
 
     # Health check configuration
     # App Runner will ping this endpoint to verify the service is healthy
