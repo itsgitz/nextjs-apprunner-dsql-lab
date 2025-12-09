@@ -25,6 +25,14 @@ run:
     env:
         - name: NODE_ENV
           value: "production"
+        - name: DSQL_HOSTNAME
+          value: "r5tl7bm5gviflc2ats54zqfncq.dsql.us-east-1.on.aws"
+        - name: DSQL_USERNAME
+          value: "admin"
+        - name: DSQL_DATABASE
+          value: "postgres"
+        - name: DSQL_REGION
+          value: "us-east-1"
 
     # Health check configuration
     # App Runner will ping this endpoint to verify the service is healthy
