@@ -12,8 +12,8 @@ build:
             # Initialize database and run migrations
             # This will create the migration table if it doesn't exist
             # and apply any pending migrations
-            - npm run db:init || true
-            - npm run migrate
+            # - npm run db:init || true
+            # - npm run migrate
 
 run:
     command: npm start
