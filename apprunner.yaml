@@ -6,7 +6,7 @@ build:
             # Install dependencies
             - npm ci
             # Fetch parameters from Parameter Store and generate .env file
-            - node scripts/fetch-params.js
+            #- node scripts/fetch-params.js
         build:
             # Build the Next.js application
             - npm run build
