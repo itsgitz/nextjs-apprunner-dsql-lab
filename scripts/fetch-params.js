@@ -59,14 +59,12 @@ async function fetchParameters() {
         });
 
         // Verify all parameters were found
-        const missingParams = PARAMETERS.filter(
-            (p) => !envVars[p.envKey],
-        ).map((p) => p.name);
+        const missingParams = PARAMETERS.filter((p) => !envVars[p.envKey]).map(
+            (p) => p.name,
+        );
 
         if (missingParams.length > 0) {
-            throw new Error(
-                `Missing parameters: ${missingParams.join(", ")}`,
-            );
+            throw new Error(`Missing parameters: ${missingParams.join(", ")}`);
         }
 
         return envVars;
@@ -103,6 +101,7 @@ async function main() {
         console.log("\n✓ Parameter Store fetch completed successfully");
         process.exit(0);
     } catch (error) {
+        console.error(error);
         console.error("\n✗ Failed to fetch parameters:", error.message);
         process.exit(1);
     }
